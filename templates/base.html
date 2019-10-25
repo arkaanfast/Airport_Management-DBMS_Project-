@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="{% static "materialize/css/materialize.min.css" %}"
+          media="screen,projection"/>
+    <script src="{% static "materialize/js/jquery.js" %}"></script>
+    <script src="{% static "materialize/js/materialize.js" %}"></script>
+    <script type="text/javascript" src="{% static "materialize/js/materialize.min.js" %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+        $(document).ready(function () {
+            $('.datepicker').datepicker();
+        });
+    </script>
+</head>
+<body>
+<nav>
+    <div class="nav-wrapper container">
+        <a href="#" class="brand-logo">Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#">Register</a></li>
+            <li><a href="#">Signup</a></li>
+            <li><a href="#">Employee</a></li>
+        </ul>
+    </div>
+</nav>
+    {% block content %}{% endblock %}
+</body>
+</html>
