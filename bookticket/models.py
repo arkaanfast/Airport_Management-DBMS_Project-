@@ -37,9 +37,9 @@ class Passenger(models.Model):
     to_airport = models.ForeignKey(Airport, related_name="to_airport", on_delete=models.CASCADE)
     name = models.CharField(max_length=20)
     passport_no = models.CharField(max_length=10, primary_key=True)
-    email = models.EmailField(max_length=30)
-    flight_id = models.ForeignKey(FlightDetails, on_delete=models.CASCADE)
-    booking_id = models.ForeignKey(Booking, on_delete=models.CASCADE)
+    email = models.EmailField(max_length=30, unique=True)
+    flight = models.ForeignKey(FlightDetails, on_delete=models.CASCADE)
+    booking = models.ForeignKey(Booking, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

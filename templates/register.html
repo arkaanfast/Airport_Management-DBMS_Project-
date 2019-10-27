@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}]
+<body>
+{% block content %}
+    <div class="card  grey darken-1" id="main-card-register">
+        <div class="card-content black-text">
+            <div class="row" id="main-form">
+                <form class="col s12" action="update/" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <input id="first_name" type="text" class="validate" placeholder="First Name" name="first"
+                                   required="required">
+                        </div>
+                        <div class="input-field col s4">
+                            <input id="last_name" type="text" class="validate" placeholder="Last Name" name="last"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s7">
+                            <input id="password" type="password" class="validate" placeholder="Password" name="pass"
+                                   required="required">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s7">
+                            <input id="password" type="password" class="validate" placeholder="Retype-Password"
+                                   name="repass" required="required">
+                        </div>
+                    </div>
+                    <div class="row center">
+                        <div class="input-field col s7" id="email-field">
+                            <input id="email" type="email" class="validate" placeholder="Email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="row center" id="submit">
+                        <div class="col s5">
+                            <input class="btn waves-effect waves-light" type="submit">
+                            <i class="material-icons">send</i>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+</body>
+</html>
