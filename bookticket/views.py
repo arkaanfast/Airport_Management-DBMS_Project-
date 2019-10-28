@@ -1,18 +1,15 @@
 from django.shortcuts import render
-
+from .models import *
 # Create your views here.
 
 
 def index(request):
 
-    return render(request, "index.html")
+    airport = Airport.objects.all()
+    stuff_for_frontend = {"airport": airport}
+    return render(request, "index.html", stuff_for_frontend)
 
 
-def register(request):
-
-    return render(request, "register.html")
-
-
-def update(request):
+def signin(request):
 
     return render(request, "index.html")

@@ -40,6 +40,7 @@ class Passenger(models.Model):
     email = models.EmailField(max_length=30, unique=True)
     flight = models.ForeignKey(FlightDetails, on_delete=models.CASCADE)
     booking = models.ForeignKey(Booking, on_delete=models.CASCADE)
+    password = models.CharField(max_length=20)
 
     def __str__(self):
         return self.name
