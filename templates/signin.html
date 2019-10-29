@@ -3,7 +3,7 @@
 {% block content %}
     <div class="col s12 m6" id="main_card-signin">
         <div class="card white small">
-            <form class="col s12" action="#" id="main-form-signin">
+            <form class="col s12" action="#" id="main-form-signin" method="post">
                 <div class="row">
                     <div class="input-field col s8">
                         <input placeholder="Enter email" type="text" class="validate">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="row">
                     <div class="cols s1">
-                        <a href="register">Have'nt registered yet click the link</a>
+                        <a href="{% url 'register' %}">Have'nt registered yet click the link</a>
                     </div>
                 </div>
             </form>
