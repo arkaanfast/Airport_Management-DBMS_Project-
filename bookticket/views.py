@@ -49,5 +49,9 @@ def passenger(request):
             p = Passenger(name=name, passport_no=passport, email=email, password=password, from_airport=from_,
                           to_airport=to_, flight_id=0, booking_id=booking.booking_id)
             p.save()
-    return render(request, "mainpage.html")
+    return HttpResponseRedirect('mainpage/')
 
+
+def main_page(request):
+
+    return render(request, "mainpage.html")
