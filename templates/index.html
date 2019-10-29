@@ -8,6 +8,7 @@
                 <div class="card-content white-text">
                     <div class="row">
                         <form action="signin/" method="post">
+                            {% csrf_token %}
                             <div class="col s6 center">
                                 <label>
                                     <input name="group1" type="radio" checked/>
@@ -23,7 +24,7 @@
                             <div class="row">
                                 <div class="input-field col s6">
                                     <select name="from">
-                                         {% for airports in airport %}
+                                        {% for airports in airport %}
                                             <option>{{ airports.name }}</option>
                                         {% endfor %}
                                     </select>

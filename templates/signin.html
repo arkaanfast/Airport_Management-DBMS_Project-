@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="col s12 m6" id="main_card-signin">
+        <div class="card white small">
+            <form class="col s12" action="#" id="main-form-signin">
+                <div class="row">
+                    <div class="input-field col s8">
+                        <input placeholder="Enter email" type="text" class="validate">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s8">
+                        <input type="password" class="validate" placeholder="password">
+                    </div>
+                </div>
+                <div class="row center">
+                    <div class="col s8">
+                        <input class="btn waves-effect waves-light" type="submit">
+                        <i class="material-icons">send</i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cols s1">
+                        <a href="register">Have'nt registered yet click the link</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
