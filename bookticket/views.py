@@ -24,6 +24,10 @@ def register(request):
     return render(request, "register.html")
 
 
+def signinagain(request):
+    return render(request, "sign_in.html")
+
+
 def passenger(request):
     if request.method == "POST":
         from_airport = request.session.get('from_airport')
@@ -49,9 +53,39 @@ def passenger(request):
             p = Passenger(name=name, passport_no=passport, email=email, password=password, from_airport=from_,
                           to_airport=to_, flight_id=0, booking_id=booking.booking_id)
             p.save()
-    return HttpResponseRedirect('mainpage/')
+    return HttpResponseRedirect('signinagain/')
 
 
 def main_page(request):
 
-    return render(request, "mainpage.html")
+    flights_set = set()
+    from_airport = Airport.objects.get(name=request.session.get("from_airport"))
+    to_airport = Airport.objects.get(name=request.session.get("to_airport"))
+    a = from_airport.from_airport_id.all()
+    b = to_airport.to_airport_id.all()
+    for flights in a:
+        for flight in b:
+            if flights.to_airport == flight.to_airport:
+                flights_set.add(flights.flight_name)
+    stuff_for_front_end = {"flights": flights_set}
+    return render(request, "mainpage.html", stuff_for_front_end)
+
+
+def finalsignin(request):
+
+    email = request.POST['email']
+    password = request.POST['password']
+    from_ = request.session.get('from_airport')
+    to_ = request.session.get('to_airport')
+    try:
+        if Passenger.objects.get(email=email):
+            p = Passenger.objects.get(email=email)
+            if p.password == password:
+                request.session['from_airport'] = from_
+                request.session['to_airport'] = to_
+                request.session['passenger'] = p.email
+                return HttpResponseRedirect('mainpage/')
+            else:
+                return HttpResponse("Password is incorect")
+    except Passenger.DoesNotExist:
+        return HttpResponse("<a href='register/'>Click to register</a>")

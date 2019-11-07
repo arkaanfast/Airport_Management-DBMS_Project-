@@ -3,15 +3,16 @@
 {% block content %}
     <div class="col s12 m6" id="main_card-signin">
         <div class="card white small">
-            <form class="col s12" action="#" id="main-form-signin" method="post">
+            <form class="col s12" action="{% url 'signinagain' %}"id="main-form-signin" method="post">
+               {% csrf_token %}
                 <div class="row">
                     <div class="input-field col s8">
-                        <input placeholder="Enter email" type="text" class="validate">
+                        <input placeholder="Enter email" type="text" class="validate" name="email">
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s8">
-                        <input type="password" class="validate" placeholder="password">
+                        <input type="password" class="validate" placeholder="password" name="password">
                     </div>
                 </div>
                 <div class="row center">
