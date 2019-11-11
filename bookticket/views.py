@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, HttpResponse, reverse, redirect
 from .models import *
 
 # Create your views here.
@@ -53,7 +53,7 @@ def passenger(request):
             p = Passenger(name=name, passport_no=passport, email=email, password=password, from_airport=from_,
                           to_airport=to_, flight_id=0, booking_id=booking.booking_id)
             p.save()
-    return HttpResponseRedirect('signinagain/')
+    return redirect('signinagain/')
 
 
 def main_page(request):
@@ -66,7 +66,7 @@ def main_page(request):
     for flights in a:
         for flight in b:
             if flights.to_airport == flight.to_airport:
-                flights_set.add(flights.flight_name)
+                flights_set.add(flights)
     stuff_for_front_end = {"flights": flights_set}
     return render(request, "mainpage.html", stuff_for_front_end)
 
@@ -84,8 +84,17 @@ def finalsignin(request):
                 request.session['from_airport'] = from_
                 request.session['to_airport'] = to_
                 request.session['passenger'] = p.email
-                return HttpResponseRedirect('mainpage/')
+                return redirect(reverse('mainpage'))
             else:
                 return HttpResponse("Password is incorect")
     except Passenger.DoesNotExist:
         return HttpResponse("<a href='register/'>Click to register</a>")
+
+
+def userpage(request, pk):
+    p = Passenger.objects.get(email=request.session.get('passenger'))
+    p.flight_id = pk
+    p.save()
+    return render(request, 'userpage.html', {"flight": p.flight})
+
+

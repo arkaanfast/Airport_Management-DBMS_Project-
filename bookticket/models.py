@@ -20,6 +20,7 @@ class FlightDetails(models.Model):
     time_arrival = models.DateTimeField()
     time_departure = models.DateTimeField()
     to_airport = models.ForeignKey(Airport, related_name="to_airport_id", on_delete=models.CASCADE)
+    price = models.IntegerField()
 
     def __str__(self):
         return self.flight_name
