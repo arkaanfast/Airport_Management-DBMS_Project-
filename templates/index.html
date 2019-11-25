@@ -9,18 +9,18 @@
                     <div class="row">
                         <form action="{% url 'signin' %}" method="post">
                             {% csrf_token %}
-                            <div class="col s6 center">
-                                <label>
-                                    <input name="group1" type="radio" checked/>
-                                    <span>One-Way</span>
-                                </label>
-                            </div>
-                            <div class="col s6 center">
-                                <label>
-                                    <input name="group1" type="radio" checked/>
-                                    <span>Two-Way</span>
-                                </label>
-                            </div>
+{#                            <div class="col s6 center">#}
+{#                                <label>#}
+{#                                    <input name="group1" type="radio" checked/>#}
+{#                                    <span>One-Way</span>#}
+{#                                </label>#}
+{#                            </div>#}
+{#                            <div class="col s6 center">#}
+{#                                <label>#}
+{#                                    <input name="group1" type="radio" checked/>#}
+{#                                    <span>Two-Way</span>#}
+{#                                </label>#}
+{#                            </div>#}
                             <div class="row">
                                 <div class="input-field col s6">
                                     <select name="from">

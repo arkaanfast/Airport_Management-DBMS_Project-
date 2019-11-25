@@ -6,21 +6,20 @@
         {% csrf_token %}
     <div class="row">
     <div class="col s4 m4" id="flight-card">
-      <div class="card small white">
+      <div class="card  white">
         <div class="card-image">
-            <img src="{% static "images/flights.jpg" %}">
+            <img src="{% static "images/flights.jpg" %}" style="width: 200px;height: 150px; margin-left: 45px;">
         </div>
         <div class="card-content" id="flight">
-          <h4>{{flight.flight_name}}</h4>
+          <h6>{{flight.flight_name}}</h6>
+               Arrival: <p>{{ flight.time_arrival }}</p></span>
+                Departure: <p>{{ flight.time_departure }}</p>
             <button type="submit" class="waves-effect waves-light btn">Book this flight</button>
         </div>
       </div>
     </div>
         <div class="col s4 m4">
-            <div class="card small white">
-                <h2>{{ flight.time_arrival }}</h2>
-                <h3>{{ flight.time_departure }}</h3>
-            </div>
+
         </div>
   </div>
         </form>

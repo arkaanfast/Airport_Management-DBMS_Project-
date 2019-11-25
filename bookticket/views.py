@@ -95,6 +95,9 @@ def userpage(request, pk):
     p = Passenger.objects.get(email=request.session.get('passenger'))
     p.flight_id = pk
     p.save()
-    return render(request, 'userpage.html', {"flight": p.flight})
+    flight_to_render = FlightDetails(flight_id=pk)
+    context = {"flight": flight_to_render}
+
+    return render(request, 'userpage.html', context)
 
 
