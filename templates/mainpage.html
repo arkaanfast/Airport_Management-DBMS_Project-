@@ -3,25 +3,33 @@
 {% block content %}
     {% for flight in flights %}
         <form action="{% url 'userpage' pk=flight.flight_id %}" method="post">
-        {% csrf_token %}
-    <div class="row">
-    <div class="col s4 m4" id="flight-card">
-      <div class="card  white">
-        <div class="card-image">
-            <img src="{% static "images/flights.jpg" %}" style="width: 200px;height: 150px; margin-left: 45px;">
-        </div>
-        <div class="card-content" id="flight">
-          <h6>{{flight.flight_name}}</h6>
-               Arrival: <p>{{ flight.time_arrival }}</p></span>
-                Departure: <p>{{ flight.time_departure }}</p>
-            <button type="submit" class="waves-effect waves-light btn">Book this flight</button>
-        </div>
-      </div>
-    </div>
-        <div class="col s4 m4">
-
-        </div>
-  </div>
+            {% csrf_token %}
+            <div class="row">
+                <div class="col s4 m4" id="flight-card">
+                    <div class="card white">
+                        <div class="col s3">
+                            <div class="card-image">
+                                <img src="{% static "images/flights.jpg" %}"
+                                     style="width: 200px;height: 150px; margin-left:20px; margin-top: 5px;">
+                            </div>
+                            <button type="submit" class="waves-effect waves-light btn"
+                                    style="margin-top: 10px; margin-left: 30px;">Book this flight
+                            </button>
+                        </div>
+                        <div class="card-content" id="flight">
+                            <div class="col s3">
+                                <h3 style="margin: 0;">{{ flight.flight_name | upper }}</h3>
+                                <h6>Departure:{{ flight.time_departure.date}}</h6>
+                                <h6>Time:{{ flight.time_departure.time }}</h6>
+                            </div>
+                            <div class="col s3">
+                                <h6 style="margin-top: 60px;">Arrival:{{ flight.time_arrival.date }}</h6>
+                                <h6>Time:{{ flight.time_arrival.time }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
 
     {% endfor %}
