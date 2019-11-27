@@ -7,7 +7,8 @@ list_booking_id = [i for i in range(0, 300)]
 
 def index(request):
     airport = Airport.objects.all()
-    stuff_for_frontend = {"airport": airport}
+    flight = FlightDetails.objects.all()
+    stuff_for_frontend = {"airport": airport, "flights": flight}
     return render(request, "index.html", stuff_for_frontend)
 
 
@@ -74,6 +75,7 @@ def main_page(request):
 def finalsignin(request):
 
     email = request.POST['email']
+    request.session['email'] = email
     password = request.POST['password']
     from_ = request.session.get('from_airport')
     to_ = request.session.get('to_airport')
@@ -96,7 +98,12 @@ def userpage(request, pk):
     p.flight_id = pk
     p.save()
     flight_to_render = FlightDetails.objects.get(flight_id=pk)
-    context = {"flight": flight_to_render}
+    context = {"flight": flight_to_render, "passenger": p}
     return render(request, 'userpage.html', context)
 
 
+def mybooking(request):
+
+    passenger = Passenger.objects.get(email=request.session.get('email'))
+    stuff_for_front_end = {'passenger': passenger}
+    return render(request, 'mybooking.html', stuff_for_front_end)

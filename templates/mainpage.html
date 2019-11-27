@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     {% for flight in flights %}
-        <form action="{% url 'userpage' pk=flight.flight_id %}" method="post">
+        <form action="{% url 'userpage' pk=flight.flight_id %}" method="get">
             {% csrf_token %}
             <div class="row">
                 <div class="col s4 m4" id="flight-card">

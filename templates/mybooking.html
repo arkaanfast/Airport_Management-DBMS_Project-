@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+ <div class="row">
+                <div class="col s4 m4" id="flight-card">
+                    <div class="card white">
+                        <div class="col s3">
+                            <div class="card-image">
+                                <img src="{% static "images/flights.jpg" %}"
+                                     style="width: 200px;height: 150px; margin-left:20px; margin-top: 5px;">
+                            </div>
+                        </div>
+                        <div class="card-content" id="flight">
+                            <div class="col s3">
+                                <h3 style="margin: 0;">{{ passenger.flight.flight_name | upper }}</h3>
+                                <h6>Departure:{{ passenger.flight.time_departure.date}}</h6>
+                                <h6>Time:{{ passenger.flight.time_departure.time }}</h6>
+                            </div>
+                            <div class="col s3">
+                                <h6 style="margin-top: 60px;">Arrival:{{ passenger.flight.time_arrival.date }}</h6>
+                                <h6>Time:{{ passenger.flight.time_arrival.time }}</h6>
+                            </div>
+                            <div class="col s3">
+                                <h6 style="margin-top: 60px;">Booking ID:{{ passenger.booking_id }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}
